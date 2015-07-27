@@ -58,6 +58,7 @@ alignFormats = True)
 * 2013-09-30 Added sourceVar option
 * 2014-06-17 Added toggle to automatically align variable formats
 * 2014-06-18 Continued work on automatically aligning variable formats
+* 2015-07-26 Removed + symbol in front of looped commands
 
 set printback = off.
 
@@ -121,7 +122,7 @@ dataset name $dataset window=front."""
             for f in range(len(spssfiles)-2):
                 submitstring += "\n and s7663804s"+ str(f+2) + "=0"
             submitstring += """).
-    +    compute %s = '%s'.
+compute %s = '%s'.
     end if.""" %(sourceVar, spssfiles[0])
             for f in range(len(spssfiles)-1):
                 submitstring += "\nif (s7663804s%s=1) %s = '%s'." %(str(f+1), 
