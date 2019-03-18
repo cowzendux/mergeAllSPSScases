@@ -1,3 +1,4 @@
+* Encoding: UTF-8.
 * Merge all SPSS files - add cases
 * By Jamie DeCoster
 
@@ -59,6 +60,7 @@ alignFormats = True)
 * 2014-06-17 Added toggle to automatically align variable formats
 * 2014-06-18 Continued work on automatically aligning variable formats
 * 2015-07-26 Removed + symbol in front of looped commands
+* 2019-03-08 Works on datetime and time types
 
 set printback = off.
 
@@ -146,7 +148,8 @@ compute %s = '%s'.
         varType = []
         varLength = []
         varDec = []
-        typeDict = {"DATE" : 1, "F" : 2, "A" : 3}
+        typeDict = {"DATETIME":1, "DATE" : 2, "TIME" : 3,
+ "F" : 4, "A" : 5}
         for f in spssfiles:
             submitstring = """GET
       FILE='%s/%s.sav'.
@@ -155,7 +158,7 @@ compute %s = '%s'.
             for t in range(spss.GetVariableCount()):
                 if (spss.GetVariableName(t) not in varNames):
                     varNames.append(spss.GetVariableName(t))
-                    varType.append("DATE")
+                    varType.append("DATETIME")
                     varLength.append(0)
                     varDec.append(0)
                 for i in range(len(varNames)):
@@ -209,7 +212,6 @@ DATASET NAME infile WINDOW=FRONT.""" %(indir, f)
 compute  %s = '%s'.
 execute.""" %(sourceVar, max(len(str(x)) for x in spssfiles)+1,
 sourceVar, f)
-                print submitstring
                 spss.Submit(submitstring)
 # Merge with other files
             if (count == 1):
