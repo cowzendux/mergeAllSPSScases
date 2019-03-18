@@ -1,4 +1,4 @@
-#mergeAllSPSScases
+# mergeAllSPSScases
 
 SPSS Python Extension function to merge all SPSS data sets in a directory by adding cases
 
@@ -6,7 +6,7 @@ The program will find all of the .sav files in the first directory and merge the
 
 This and other SPSS Python Extension functions can be found at http://www.stat-help.com/python.html
 
-##Usage
+## Usage
 **mergeAllSPSScases(indir, mergename, outdir, sourceVar, alignFormats)**
 * "indir" is the location of the original data files.
 * "mergename" is the name you want given to the merge file.
@@ -14,7 +14,7 @@ This and other SPSS Python Extension functions can be found at http://www.stat-h
 * "sourceVar" is an optional argument indicating whether you want to include the source as a variable in the final merge file. If this argument is assigned to a string, then that string is the name of the variable that will contain the source. If this argument is omitted, then final data file will not contain a variable indicating the source.
 * "alignFormats" is an optional argument indicating whether you want the to automatically convert the data sets to align the variable formats before trying to merge the data sets. This will require an extra pass through the data sets If this argument is omitted, the program will not try to align the format of the the data sets.
 
-##Example
+## Example
 **mergeAllSPSScases(indir = "C:/Users/jd4nb/Dropbox/Art project/Data/Raw",  
 mergename = "Merged art data.sav",  
 outdir = "C:/Users/jd4nb/Dropbox/Art project/Data/Final",  
